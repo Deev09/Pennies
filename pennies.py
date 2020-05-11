@@ -3,38 +3,38 @@ import random
 import string
 
 def match(pattern,pattern2,arr):
-    M=len(pattern)
-    O=len(pattern2)
-    N=32
-    a=0
-    b=0
+    A_sequence=len(pattern)
+    B_sequence=len(pattern2)
+    random_string=32
+    player_a=0
+    player_b=0
     for position in range(len(arr)):
-        for i in range(N-M+1):
+        for indexA in range(random_string-A_sequence+1):
             j=0
-            while j<M:
-                if arr[position][i+j]!=pattern[j]:
+            while j<A_sequence:
+                if arr[position][indexA+j]!=pattern[j]:
                     break
                 j+=1
-            if j==M:
+            if j==A_sequence:
                 #print('pattern1 found at index',i)
                 break
-        for m in range(N-O +1):  
+        for indexB in range(random_string-B_sequence +1):  
             h=0
 
-            while h<O:
-                if arr[position][m+h]!=pattern2[h]:
+            while h<B_sequence:
+                if arr[position][indexB+h]!=pattern2[h]:
                     break
                 h+=1
-            if h==O:
+            if h==B_sequence:
                 #print('pattern2 found at index,',m)
                 break
-        if i<m:
-            a+=1
+        if indexA<indexB:
+            player_a+=1
             #print('A wins')  
         else:
-            b+=1
+            player_b+=1
             #print('B wins')  
-    print('Player A wins:',a,'PLayer B wins:',b)
+    print('Player A wins:',player_a,'PLayer B wins:',player_b)
 
 option=['H','T']
 listo=[]
