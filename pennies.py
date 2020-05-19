@@ -1,83 +1,49 @@
 # Naive algorithm for problem solving
 import random
 import string
-import matplotlib.pyplot as plt
-import numpy as np
-
-mu, sigma = 100, 15
-
-x = mu + sigma * np.random.randn(10000)
-
-# the histogram of the data
-n, bins, patches = plt.hist(x, 50, density=1, facecolor='g', alpha=0.75)
 
 
-plt.xlabel('Smarts')
-plt.ylabel('Probability')
-plt.title('Likelihood of winning')
-plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
-plt.axis([40, 160, 0, 0.03])
-plt.grid(True)
-plt.show()
+def match(pattern):
 
-def match(pattern,pattern2,arr):
-
-    match.player_a=0
-    match.player_b=0
-    for i in range(8):
-        arr.append(''.join([random.choice(option) for n in range(32)]))
-    
-    A_sequence=len(pattern)
-    B_sequence=len(pattern2)
+    scores=[]
+    A_sequence=len(pattern[0])
     random_string=32
-        
-
-        
-       
-        
-    for position in range(len(arr)):
-        for indexA in range(random_string-A_sequence+1):
-            j=0
-            while j<A_sequence:
-                if arr[position][indexA+j]!=pattern[j]:
+    scoressum=[]    
+  
+    for position in range(len(listo)):
+        for i in range(len(pattern)):
+            for indexA in range(random_string-A_sequence+1):
+                j=0
+                while j<A_sequence:
+                    if listo[position][indexA+j]!=pattern[i][j]:
+                        break
+                    j+=1
+                if j==A_sequence:
+                    print('pattern1 found at index',indexA)
+                    scores.append(indexA)
                     break
-                j+=1
-            if j==A_sequence:
-                print('pattern1 found at index',i)
-                break
-        for indexB in range(random_string-B_sequence +1):  
-            h=0
-
-            while h<B_sequence:
-                if arr[position][indexB+h]!=pattern2[h]:
-                    break
-                h+=1
-            if h==B_sequence:
-                print('pattern2 found at index,',indexB)
-                break
-        if indexA<indexB:
-            match.player_a+=1
                 
-                #print('A wins')  
-        else:
-            match.player_b+=1
                 
-                #print('B wins')  
-    print('Player A wins:',match.player_a,'PLayer B wins:',match.player_b)
-    
-
-
-    
-
-
-option=['H','T']
+            
+    print(scores)
+        
+    print(scoressum)
+    print('player',scores.index(min(scores))+1,'wins')
+   
 listo=[]
+option=['H','T']
+for i in range(1):
+    listo.append(''.join([random.choice(option) for n in range(32)]))
 
 
-pattern=input()
-pattern2=input()
+players=[]
+n=int(input())
+for i in range(n):
+    pattern_n=input()
+    players.append(pattern_n)
 
-match(pattern,pattern2, listo)
+print(listo)
+match(players)
 
-
+print(listo) 
 
